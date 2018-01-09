@@ -1,0 +1,48 @@
+// compileCompressed: $1.css
+
+$light: #eee;
+$primary: #007bff;
+
+#flatcal_minical{
+
+  .flatcal_main_t{
+    > table{
+      background-color: #fff;
+      margin-bottom: 0;
+    }
+  }
+
+  .flatcal_weekdays_row{
+    .flatcal_weekdays{
+      border-bottom: 2px $primary solid;
+    }
+  }
+
+  .flatcal_sundaycell{
+    .flatcal_sundaylink{
+      color: #7a7a7a !important;
+    }
+  }
+
+  .flatcal_todaycell{
+    background-color: $primary;
+    .flatcal_daylink{
+      color: $light;
+    }
+  }
+
+  .flatcal_busylink{
+    color: $primary;
+  }
+
+  .flatcal_weekdays td{
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .link_prev i,
+  .link_next i{
+    cursor: pointer;
+  }
+
+}
