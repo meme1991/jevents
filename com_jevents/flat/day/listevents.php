@@ -1,6 +1,6 @@
 <?php defined('_JEXEC') or die('Restricted access'); ?>
 
-<div class="wrapper jevent-monthview">
+<div class="wrapper jevent-dayview">
 	<div class="container">
 		<div class="row">
 
@@ -10,7 +10,7 @@
 			<div class="col-3 sidebar-alt">
 				<?php $this->_showNavTableBar(); ?>
 			</div>
-			<div class="col-9" id="jevents_body">
+			<div class="col-9">
 				<?php echo $this->loadTemplate("body"); ?>
 			</div>
 			<div class="col-12">

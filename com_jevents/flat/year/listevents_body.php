@@ -27,55 +27,29 @@ $precedingYear = $this->getPrecedingYear($this->year, $this->month, $this->day);
 		<?php $num_events = count($data["months"][$month]["rows"]); ?>
 		<?php if ($num_events>0) : ?>
 			<?php $hasevents = true; ?>
+			<div class="jev_daysnames">
+		    <?php echo JEventsHTML::getDateFormat($this->year,$month,'',3);?>
+			</div>
 
+			<div class="jev_listrow">
+				<ul class="ev_ul">
+					<?php for ($r = 0; $r < $num_events; $r++) : ?>
+						<?php if (!isset($data["months"][$month]["rows"][$r])) continue; ?>
+						<?php $row =& $data["months"][$month]["rows"][$r]; ?>
+						<?php $listyle = 'style="border-color:'.$row->bgcolor().';"'; ?>
+						<li class='ev_td_li' <?php echo $listyle ?>>
+							<?php $this->loadedFromTemplate('icalevent.list_row', $row, 0); ?>
+						</li>
+						<?php endfor; ?>
+				</ul>
+			</div>
 
 		<?php endif; ?>
 	<?php endfor; ?>
-
 </div>
 
+<?php if (! $hasevents) : ?>
+	<?php echo JLayoutHelper::render('joomla.content.message.message_info', JText::_('JEV_NO_EVENTS_FOUND')); ?>
+<?php endif; ?>
 
-
-    <div id='jev_maincal' class='jev_listview'>
-
-
-
-
-
-<?php
-$hasevents = false;
-for($month = 1; $month <= 12; $month++) {
-	$num_events = count($data["months"][$month]["rows"]);
-	if ($num_events>0){
-$hasevents = true;
-		?>
-		<div class="jev_daysnames">
-	    <?php echo JEventsHTML::getDateFormat($this->year,$month,'',3);?>
-		</div>
-		<div class="jev_listrow">
-		<?php
-		echo "<ul class='ev_ul'>\n";
-		for ($r = 0; $r < $num_events; $r++) {
-			if (!isset($data["months"][$month]["rows"][$r])) continue;
-			$row =& $data["months"][$month]["rows"][$r];
-			$listyle = 'style="border-color:'.$row->bgcolor().';"';
-
-			echo "<li class='ev_td_li' $listyle>\n";
-			$this->loadedFromTemplate('icalevent.list_row', $row, 0);
-			echo "</li>\n";
-		}
-		echo "</ul>\n";
-		echo '</div>';
-	}
-
-}
-if (! $hasevents) {
-	echo '<div class="list_no_e">' . "\n";
-	echo JText::_ ( 'JEV_NO_EVENTS_FOUND' );
-	echo "</div>\n";
-}
-?>
-<div class="jev_clear" ></div>
-</div>
-<?php
-$this->paginationForm($data["total"], $data["limitstart"], $data["limit"]);
+<?php $this->paginationForm($data["total"], $data["limitstart"], $data["limit"]); ?>
