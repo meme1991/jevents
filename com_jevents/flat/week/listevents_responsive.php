@@ -23,7 +23,7 @@ $precedingWeek = $this->datamodel->getPrecedingWeek($this->year, $this->month, $
 
 <div class="btn-group w-100 my-2 jev_toprow" role="group" aria-label="Month nav">
 	<?php if ($precedingWeek): ?>
-		<a href="<?php echo $precedingWeek ?>" role="button" title="<?php echo JText::_("PRECEEDING_Week") ?>" class="btn btn-primary w-25 no-shadow"><i class="fas fa-chevron-circle-left mr-1"></i><?php echo JText::_("PRECEEDING_Week") ?></a>
+		<a href="<?php echo $precedingWeek ?>" role="button" title="<?php echo JText::_("PRECEEDING_Week") ?>" class="btn btn-primary w-25 no-shadow"><i class="fas fa-chevron-circle-left mr-1"></i><span class="d-none d-md-inline-block"><?php echo JText::_("PRECEEDING_Week") ?></span></a>
 	<?php endif; ?>
 	<div class="w-50 d-inline-block text-center" style="padding:6px; border:1px #007bff solid;">
     <?php $week_start = $data ['days'] ['0']; ?>
@@ -43,7 +43,7 @@ $precedingWeek = $this->datamodel->getPrecedingWeek($this->year, $this->month, $
     <?php echo JEV_CommonFunctions::jev_strftime($startformat, $starttime) . ' - ' . JEV_CommonFunctions::jev_strftime($endformat, $endtime); ?>
   </div>
 	<?php if ($followingWeek): ?>
-		<a href="<?php echo $followingWeek ?>" role="button" title="<?php echo JText::_("FOLLOWING_Week") ?>" class="btn btn-primary w-25 no-shadow"><?php echo JText::_("FOLLOWING_Week") ?><i class="fas fa-chevron-circle-right ml-1"></i></a>
+		<a href="<?php echo $followingWeek ?>" role="button" title="<?php echo JText::_("FOLLOWING_Week") ?>" class="btn btn-primary w-25 no-shadow"><span class="d-none d-md-inline-block"><?php echo JText::_("FOLLOWING_Week") ?></span><i class="fas fa-chevron-circle-right ml-1"></i></a>
 	<?php endif; ?>
 </div>
 
@@ -55,11 +55,11 @@ $precedingWeek = $this->datamodel->getPrecedingWeek($this->year, $this->month, $
       <?php continue; ?>
     <?php endif; ?>
 
-      <a class="ev_link_weekday" href=" <?php echo $data['days'][$d]['link'] ?>" title="<?php echo JText::_('JEV_CLICK_TOSWITCH_DAY') ?>">
-        <div class="jev_daysnames">
-          <?php echo JEventsHTML::getDateFormat($data ['days'] [$d] ['week_year'], $data ['days'] [$d] ['week_month'], $data ['days'] [$d] ['week_day'], 2); ?>
-        </div>
-      </a>
+      <!-- <a class="ev_link_weekday" href=" <?php echo $data['days'][$d]['link'] ?>" title="<?php echo JText::_('JEV_CLICK_TOSWITCH_DAY') ?>"> -->
+      <div class="jev_daysnames">
+        <?php echo JEventsHTML::getDateFormat($data ['days'] [$d] ['week_year'], $data ['days'] [$d] ['week_month'], $data ['days'] [$d] ['week_day'], 2); ?>
+      </div>
+      <!-- </a> -->
 
       <div class="jev_listrow">
         <?php if ($num_events > 0) : ?>

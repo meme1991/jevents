@@ -12,10 +12,10 @@ $Itemid = JEVHelper::getItemid();
 ?>
 <div id='jev_maincal' class='jev_listview category'>
   <div class="jev_listrow">
-    <div class="jev_daysnames category">
+    <div class="category">
       <?php $this->viewNavCatText($this->catids, JEV_COM_COMPONENT, 'cat.listevents', $this->Itemid); ?>
       <?php $hasevents = false; ?>
-      <h6><?php echo $data ['catname']; ?></h6>
+      <h6 class="jev_daysnames mb-0"><?php echo $data ['catname']; ?></h6>
     </div>
     <?php if (JString::strlen($data['catdesc']) > 0) : ?>
       <div class='jev_catdesc'><?php echo $data ['catdesc'] ?></div>

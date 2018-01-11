@@ -18,9 +18,9 @@ $followingMonth = $this->datamodel->getFollowingMonth($this->data);
 $precedingMonth = $this->datamodel->getPrecedingMonth($this->data);
 ?>
 	<div class="btn-group w-100 my-2" role="group" aria-label="Month nav">
-	  <a href="<?php echo $precedingMonth['link'] ?>" role="button" title="<?php echo $precedingMonth['name'] ?>" class="btn btn-primary w-25 no-shadow"><i class="fas fa-chevron-circle-left mr-1"></i><?php echo $precedingMonth['name'] ?></a>
+	  <a href="<?php echo $precedingMonth['link'] ?>" role="button" title="<?php echo $precedingMonth['name'] ?>" class="btn btn-primary w-25 no-shadow"><i class="fas fa-chevron-circle-left mr-1"></i><span class="d-none d-md-inline-block"><?php echo $precedingMonth['name'] ?></span></a>
 	  <div class="w-50 d-inline-block text-center" style="padding:6px; border:1px #007bff solid;"><?php echo $this->data['fieldsetText']; ?></div>
-	  <a href="<?php echo $followingMonth['link'] ?>" role="button" title="<?php echo $followingMonth['name'] ?>" class="btn btn-primary w-25 no-shadow"><?php echo $followingMonth['name'] ?><i class="fas fa-chevron-circle-right ml-1"></i></a>
+	  <a href="<?php echo $followingMonth['link'] ?>" role="button" title="<?php echo $followingMonth['name'] ?>" class="btn btn-primary w-25 no-shadow"><span class="d-none d-md-inline-block"><?php echo $followingMonth['name'] ?></span><i class="fas fa-chevron-circle-right ml-1"></i></a>
 	</div>
 
   <table border="0" cellpadding="0" class="cal_top_day_names table">

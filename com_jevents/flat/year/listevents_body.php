@@ -11,13 +11,13 @@ $followingYear = $this->getFollowingYear($this->year, $this->month, $this->day);
 $precedingYear = $this->getPrecedingYear($this->year, $this->month, $this->day);
 
 ?>
-<div class="btn-group w-100 my-2 jev_toprow" role="group" aria-label="Month nav">
+<div class="btn-group w-100 mt-3 mt-lg-0 mb-2 jev_toprow" role="group" aria-label="Month nav">
 	<?php if ($precedingYear): ?>
-		<a href="<?php echo $precedingYear ?>" role="button" title="<?php echo JText::_("PRECEEDING_Year") ?>" class="btn btn-primary w-25 no-shadow"><i class="fas fa-chevron-circle-left mr-1"></i><?php echo JText::_("PRECEEDING_Year") ?></a>
+		<a href="<?php echo $precedingYear ?>" role="button" title="<?php echo JText::_("PRECEEDING_Year") ?>" class="btn btn-primary w-25 no-shadow"><i class="fas fa-chevron-circle-left mr-1"></i><span class="d-none d-md-inline-block"><?php echo JText::_("PRECEEDING_Year") ?></span></a>
 	<?php endif; ?>
 	<div class="w-50 d-inline-block text-center" style="padding:6px; border:1px #007bff solid;"><?php echo $data["year"] ?></div>
 	<?php if ($followingYear): ?>
-		<a href="<?php echo $followingYear ?>" role="button" title="<?php echo JText::_("FOLLOWING_Year") ?>" class="btn btn-primary w-25 no-shadow"><?php echo JText::_("FOLLOWING_Year") ?><i class="fas fa-chevron-circle-right ml-1"></i></a>
+		<a href="<?php echo $followingYear ?>" role="button" title="<?php echo JText::_("FOLLOWING_Year") ?>" class="btn btn-primary w-25 no-shadow"><span class="d-none d-md-inline-block"><?php echo JText::_("FOLLOWING_Year") ?></span><i class="fas fa-chevron-circle-right ml-1"></i></a>
 	<?php endif; ?>
 </div>
 

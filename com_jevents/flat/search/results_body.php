@@ -17,7 +17,7 @@ $chdate	= '';
 	</div>
 
 	<div class="jev_listrow">
-	   <div class='jev_catdesc'><?php echo $this->keyword  ;?></div>
+		<div class='jev_catdesc'><?php echo $this->keyword  ;?></div>
 	</div>
 
 	<?php if( $data['num_events'] > 0 ) : ?>
@@ -32,11 +32,11 @@ $chdate	= '';
 
 			<?php if( $event_day_month_year <> $chdate ): ?>
 				<?php $date =JEventsHTML::getDateFormat( $row->yup(), $row->mup(), $row->dup(), 1 ); ?>
-				<div class="jev_listrow"><ul class="ev_ul">
+				<div class="jev_listrow"><ul class="ev_ul list-group list-small">
 			<?php endif; ?>
 
 			<?php $listyle = 'style="border-color:'.$row->bgcolor().';"'; ?>
-			<li class='ev_td_li' <?php echo $listyle ?>>
+			<li class="ev_td_li list-group-item" <?php echo $listyle ?>>
 				<?php $this->loadedFromTemplate('icalevent.list_row', $row, 0); ?>
 			</li>
 
