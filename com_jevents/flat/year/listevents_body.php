@@ -21,7 +21,7 @@ $precedingYear = $this->getPrecedingYear($this->year, $this->month, $this->day);
 	<?php endif; ?>
 </div>
 
-<div id='jev_maincal' class="row jev_listview">
+<div id='jev_maincal' class="jev_listview">
 	<?php $hasevents = false; ?>
 	<?php for($month = 1; $month <= 12; $month++) : ?>
 		<?php $num_events = count($data["months"][$month]["rows"]); ?>
@@ -32,15 +32,15 @@ $precedingYear = $this->getPrecedingYear($this->year, $this->month, $this->day);
 			</div>
 
 			<div class="jev_listrow">
-				<ul class="ev_ul">
+				<ul class="ev_ul list-group list-small">
 					<?php for ($r = 0; $r < $num_events; $r++) : ?>
 						<?php if (!isset($data["months"][$month]["rows"][$r])) continue; ?>
 						<?php $row =& $data["months"][$month]["rows"][$r]; ?>
 						<?php $listyle = 'style="border-color:'.$row->bgcolor().';"'; ?>
-						<li class='ev_td_li' <?php echo $listyle ?>>
+						<li class="ev_td_li list-group-item" <?php echo $listyle ?>>
 							<?php $this->loadedFromTemplate('icalevent.list_row', $row, 0); ?>
 						</li>
-						<?php endfor; ?>
+					<?php endfor; ?>
 				</ul>
 			</div>
 

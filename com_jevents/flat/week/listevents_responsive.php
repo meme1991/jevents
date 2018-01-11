@@ -47,7 +47,7 @@ $precedingWeek = $this->datamodel->getPrecedingWeek($this->year, $this->month, $
 	<?php endif; ?>
 </div>
 
-<div id='jev_maincal' class="row jev_listview">
+<div id='jev_maincal' class="jev_listview">
   <?php $hasevents = false; ?>
   <?php for ($d = 0; $d < 7; $d ++) : ?>
     <?php $num_events = count($data['days'][$d]['rows']); ?>
@@ -63,16 +63,16 @@ $precedingWeek = $this->datamodel->getPrecedingWeek($this->year, $this->month, $
 
       <div class="jev_listrow">
         <?php if ($num_events > 0) : ?>
-            <?php $hasevents = true; ?>
-            <ul class='ev_ul'>
-            <?php for ($r = 0; $r < $num_events; $r ++) : ?>
-              <?php $row = $data ['days'] [$d] ['rows'] [$r]; ?>
-              <?php $listyle = 'style="border-color:' . $row->bgcolor() . ';"'; ?>
-              <li class='ev_td_li' <?php echo $listyle ?>>
-                <?php $this->loadedFromTemplate('icalevent.list_row', $row, 0); ?>
-              </li>
-            <?php endfor; ?>
-            </ul>
+          <?php $hasevents = true; ?>
+          <ul class="ev_ul list-group list-small">
+          <?php for ($r = 0; $r < $num_events; $r ++) : ?>
+            <?php $row = $data ['days'] [$d] ['rows'] [$r]; ?>
+            <?php $listyle = 'style="border-color:' . $row->bgcolor() . ';"'; ?>
+            <li class="ev_td_li list-group-item" <?php echo $listyle ?>>
+              <?php $this->loadedFromTemplate('icalevent.list_row', $row, 0); ?>
+            </li>
+          <?php endfor; ?>
+          </ul>
         <?php endif; ?>
       </div>
   <?php endfor; ?>

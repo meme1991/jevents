@@ -2,6 +2,9 @@
 /*
 * Component Styling
 */
+
+$primary: #007bff;
+
 #jevents_body{
     width:100% !important;
     // border:1px solid #DDD;
@@ -208,18 +211,28 @@ a.cal_daylink:hover{
 /***************************
 * List style
 **************************/
-ul.ev_ul {
-    list-style:none;
-    padding:0px;
-    margin:5px;
+#jevents_body{
+  .list-small{
+    .list-group-item{
+      border-left-width: 5px;
+      border-left-style: solid;
+      border-top-width: 1px;
+      border-top-style: solid;
+    }
+  }
 }
-.jev_listrow  ul.ev_ul li.ev_td_li {
-    border-style:solid;
-    border-width:0 0 1px 5px;
-    margin-bottom:1px;
-    padding-left:2px;
-    background-image:none
-}
+// ul.ev_ul {
+//     list-style:none;
+//     padding:0px;
+//     margin:5px;
+// }
+// .jev_listrow  ul.ev_ul li.ev_td_li {
+//     border-style:solid;
+//     border-width:0 0 1px 5px;
+//     margin-bottom:1px;
+//     padding-left:2px;
+//     background-image:none
+// }
 a.ev_link_cat:link {
     font-size:12px;
 
@@ -377,23 +390,23 @@ table.jev_row {
 div.previousmonth {
     margin-left:1%;
 }
-#jevents_body #jev_maincal.jev_listview .jev_daysnames {
-    background-color: #F7F7F7;
-    border-width: 1px 1px 1px 0px;
-    border-style: solid;
-    border-color: #DDD;
-    padding-left: 10px;
-    height: 23px;
-    line-height: 23px;
-    color: #474747;
-    font-size: 12px;
-    font-weight: normal;
-    text-align: left;
-    float: left;
-    width: 110px;
-    max-width: 100%;
-    overflow: hidden;
-}
+// #jevents_body #jev_maincal.jev_listview .jev_daysnames {
+//     background-color: #F7F7F7;
+//     border-width: 1px 1px 1px 0px;
+//     border-style: solid;
+//     border-color: #DDD;
+//     padding-left: 10px;
+//     height: 23px;
+//     line-height: 23px;
+//     color: #474747;
+//     font-size: 12px;
+//     font-weight: normal;
+//     text-align: left;
+//     float: left;
+//     width: 110px;
+//     max-width: 100%;
+//     overflow: hidden;
+// }
 
 /**********************
 * Form style
@@ -890,7 +903,7 @@ div.export_form {
 #jevents_body .cal_today a.cal_daylink:hover {border-left: 1px solid #007bff;background-color:#fff; border:1px solid #007bff; padding:4px;border-radius:10px;}
 
 .saturday, .sunday { color: #ADADAD;}
-#jev_maincal {margin:15px -1px 15px -1px;background-color:#FCFCFC;border:1px solid #ddd;}
+// #jev_maincal {margin:15px -1px 15px -1px;background-color:#FCFCFC;border:1px solid #ddd;}
 div#jumpto form {text-align:center; width: 93%;margin-top:10px;}
 #jevents_body #jumpto form select{
     font-size:12px;
@@ -934,10 +947,10 @@ div#jumpto form {text-align:center; width: 93%;margin-top:10px;}
 .ev_prevrepeat, .ev_nextrepeat {display:inline-block;}
 .ev_nextrepeat {margin-left:15px;}
 #jevents_body div.list_no_e {padding:15px;text-align:center; font-size:14px;}
-#jevents_body .jev_daysnames.category {margin-top:0px !important;padding-left:5px ;padding-right:5px ;padding-top:5px;min-width:110px;min-height: 33px;}
-#jev_maincal.jev_listview.category .jev_listrow:first-child {border-bottom:0px;}
+// #jevents_body .jev_daysnames.category {margin-top:0px !important;padding-left:5px ;padding-right:5px ;padding-top:5px;min-width:110px;min-height: 33px;}
+// #jev_maincal.jev_listview.category .jev_listrow:first-child {border-bottom:0px;}
 
-#jevents_body .jev_daysnames.category select {background: none;height: 25px;width: 110px;border:1px solid #ddd;font-size:11px;}
+// #jevents_body .jev_daysnames.category select {background: none;height: 25px;width: 110px;border:1px solid #ddd;font-size:11px;}
 #jevents_body .jev_pagination select#limit.inputbox {width:60px;}
 .event_details {padding:10px;}
 #jevents_body #jevcatbar {border:0px;border-bottom: 1px solid #e3e3e3;border-top: 1px solid #e3e3e3;border-radius: 3px 3px 0px 0px;}
@@ -959,14 +972,14 @@ div#jumpto form {text-align:center; width: 93%;margin-top:10px;}
     padding: 0 0 0 15px;
     margin: 10px 0 10px 0px;
 }**/
-#jevents_body .jev_listview .jev_listrow li {
-    background: none;
-    padding-left: 10px;
-    margin: 3px 10px;
-    border-style: solid;
-    border-width: 0px 0px 1px 4px!important;
-    list-style-type: none;
-}
+// #jevents_body .jev_listview .jev_listrow li {
+//     background: none;
+//     padding-left: 10px;
+//     margin: 3px 10px;
+//     border-style: solid;
+//     border-width: 0px 0px 1px 4px!important;
+//     list-style-type: none;
+// }
 .jev_toprow .jev_header2 {
     margin: 0px;
     padding: 0px;
@@ -1009,16 +1022,47 @@ div#jumpto form {text-align:center; width: 93%;margin-top:10px;}
 .popover div > div {color:inherit;}
 
 /** JEvents jQuery adjustments **/
-.jev_daysnames.category  {
-    width:200px !important;
-    height:auto !important;
-}
-.jev_daysnames.category .chzn-container.chzn-container-single {
-    position: absolute !important;
-    width: 195px !important;
-    text-align: left;
-    display: block;
-}
+// .jev_daysnames.category  {
+//     width:200px !important;
+//     height:auto !important;
+// }
+// .jev_daysnames.category .chzn-container.chzn-container-single {
+//     position: absolute !important;
+//     width: 195px !important;
+//     text-align: left;
+//     display: block;
+// }
 
 /** Make sure choosen list is under input **/
 #jevents .chzn-container.chzn-container-single .chzn-results {clear:both;}
+
+.jevent-wapper{
+  .sidebar-alt{
+    @media (max-width: 991px){
+      border: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}
+
+.jevent-nav{
+  .navbar-toggler{
+    position: relative;
+    color: $primary;
+    //border-color: $light;
+    border-width: 0;
+    // margin-left: 15px;
+    // margin-top: 5px;
+    margin-bottom: 5px;
+    i{
+      // display: block;
+      font-size: 30px;
+    }
+    span{
+      position: relative;
+      bottom: 3px;
+      font-size: 22px;
+    }
+  }
+}

@@ -20,7 +20,7 @@
 				<?php if( !$this->pop ): ?>
 					<?php $this->_viewNavAdminPanel(); ?>
 				<?php endif; ?>
-				<?php $this->_footer(); ?>
+				<?php //$this->_footer(); ?>
 			</div>
 		</div>
 	</div>
