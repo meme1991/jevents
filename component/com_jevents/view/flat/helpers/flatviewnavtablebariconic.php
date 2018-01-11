@@ -40,13 +40,81 @@ class FlatViewNavTableBarIconic {
         <?php //endif; ?> -->
 
         <nav class="navbar-expand-lg jevent-nav">
-          <button class="navbar-toggler p-0" type="button" data-toggle="collapse" data-target="#jevents-nav" aria-controls="jevents-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler p-0 py-2" type="button" data-toggle="collapse" data-target="#jevents-nav" aria-controls="jevents-nav" aria-expanded="false" aria-label="Toggle navigation">
             <i class="far fa-bars d-inline-block"></i>
             <span class="d-inline-block">MENU'</span>
           </button>
 
           <div class="collapse navbar-collapse" id="jevents-nav">
             <div class="new-navigation w-100">
+
+              <ul class="list-inline">
+                <?php if ($cfg->get('com_print_icon_view', 1)) : ?>
+                  <?php
+                  $jevtype	= $jinput->get('jevtype', null, null);
+                  $evid		= $jinput->getInt('evid');
+                  $pop		= $jinput->getInt('pop', '0');
+              		$print_link = 'index.php?option=' . JEV_COM_COMPONENT
+              		. '&task=' . $task
+              		. ($evid ? '&evid=' . $evid : '')
+              		. ($jevtype ? '&jevtype=' . $jevtype : '')
+              		. ($view->year ? '&year=' . $view->year : '')
+              		. ($view->month ? '&month=' . $view->month : '')
+              		. ($view->day ? '&day=' . $view->day : '')
+              		. $view->datamodel->getItemidLink()
+              		. $view->datamodel->getCatidsOutLink()
+              		. '&pop=1'
+              		. '&tmpl=component';
+              		$print_link = JRoute::_($print_link);
+
+                  if ($pop) :
+                    $onclick = "javascript:window.print(); return false";
+                  else:
+                    $onclick = "window.open('".$print_link."', 'win2', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=600,height=600,directories=no,location=no');";
+                  endif;
+              		?>
+                  <li class="list-inline-item">
+                    <a href="javascript:void(0);" onclick="<?php echo $onclick ?>">
+                      <i class="fal fa-print fa-2x"></i>
+                    </a>
+                  </li>
+                <?php endif; ?>
+
+                <?php if ($cfg->get('com_email_icon_view', 1)) : ?>
+                  <?php $task = $jinput->getString('jevtask', ''); ?>
+              		<?php $link = 'index.php?option=' . JEV_COM_COMPONENT
+              		. '&task=' . $task
+              		. ($evid ? '&evid=' . $evid : '')
+              		. ($jevtype ? '&jevtype=' . $jevtype : '')
+              		. ($view->year ? '&year=' . $view->year : '')
+              		. ($view->month ? '&month=' . $view->month : '')
+              		. ($view->day ? '&day=' . $view->day : '')
+              		. $view->datamodel->getItemidLink()
+              		. $view->datamodel->getCatidsOutLink();
+              		?>
+              		<?php $link =JRoute::_($link); ?>
+              		<?php //if (strpos($link,"/")===0) $link = JString::substr($link,1); ?>
+              		<?php $uri	        = JURI::getInstance(JURI::base()); ?>
+              		<?php $root = $uri->toString( array('scheme', 'host', 'port') ); ?>
+
+              		<?php $link = $root.$link; ?>
+              		<?php require_once(JPATH_SITE.'/'.'components'.'/'.'com_mailto'.'/'.'helpers'.'/'.'mailto.php'); ?>
+              		<?php $url	= JRoute::_('index.php?option=com_mailto&tmpl=component&link='.MailToHelper::addLink( $link )); ?>
+
+                  <li class="list-inline-item">
+                    <a href="javascript:void(0);" rel="nofollow" onclick="javascript:window.open('<?php echo $url;?>','emailwin','width=400,height=350,menubar=yes,resizable=yes'); return false;" title="<?php echo JText::_( 'EMAIL' ); ?>">
+                      <i class="fal fa-envelope fa-2x"></i>
+                    </a>
+                  </li>
+                <?php endif; ?>
+
+                <li class="list-inline-item">
+                  <a title="Ricerca evento" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=search.form&' . $view_date->toDateURL() . '&Itemid=' . $Itemid); ?>">
+                    <i class="fal fa-search fa-2x"></i>
+                  </a>
+                </li>
+              </ul>
+
               <ul class="list-group list-striped list-hover">
                 <?php if (in_array("byyear", $this->iconstoshow)) : ?>
                   <li class="list-group-item<?php if ($task == "year.listevents") : echo ' active'; endif; ?>">
@@ -94,17 +162,17 @@ class FlatViewNavTableBarIconic {
                   <?php endif; ?>
                 <?php endif; ?>
 
-                <?php if (in_array("search", $this->iconstoshow)) : ?>
+                <!-- <?php if (in_array("search", $this->iconstoshow)) : ?>
                   <li class="list-group-item<?php if ($task == "search.form") : echo ' active'; endif; ?>">
                     <a id="nav-search" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=search.form&' . $view_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_SEARCH_TITLE'); ?>" >
                       Ricerca <i class="far fa-search"></i>
                     </a>
                   </li>
-                <?php endif; ?>
+                <?php endif; ?> -->
               </ul>
             </div>
 
-            <div class="">
+            <div class="w-100">
               <?php if (in_array("bymonth", $this->iconstoshow)) : ?>
                 <?php echo $this->_viewHiddenJumpto($view_date, $view, $Itemid); ?>
               <?php endif; ?>
@@ -119,7 +187,7 @@ class FlatViewNavTableBarIconic {
     function _viewJumptoIcon($today_date, $viewimages) {
         ?>
         <li class="list-group-item">
-          <a id="nav-jumpto" class="" role="button" href="#" onclick="if (jevjq('#jumpto').hasClass('jev_none')) {jevjq('#jumpto').removeClass('jev_none');} else {jevjq('#jumpto').addClass('jev_none')};return false;" title="<?php echo   JText::_('JEV_JUMPTO');?>">
+          <a id="nav-jumpto" href="#" onclick="if (jevjq('#jumpto').hasClass('jev_none')) {jevjq('#jumpto').removeClass('jev_none');} else {jevjq('#jumpto').addClass('jev_none')};return false;" title="<?php echo   JText::_('JEV_JUMPTO');?>">
             <?php echo JText::_('JEV_JUMPTO'); ?>
           </a>
         </li>
@@ -147,7 +215,7 @@ class FlatViewNavTableBarIconic {
             /* Year Select */
             JEventsHTML::buildYearSelect($this_date->getYear(1), '');
             ?>
-            <button class="btn btn-primary" type="button" onclick="submit(this.form)"><?php echo JText::_('JEV_JUMPTO'); ?></button>
+            <button class="btn btn-primary btn-block mt-2" type="button" onclick="submit(this.form)"><?php echo JText::_('JEV_JUMPTO'); ?></button>
             <input type="hidden" name="Itemid" value="<?php echo $Itemid; ?>" />
           </form>
         </div>
