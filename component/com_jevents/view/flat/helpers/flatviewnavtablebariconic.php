@@ -33,75 +33,86 @@ class FlatViewNavTableBarIconic {
         $month_date = ( JevDate::mktime(0, 0, 0, $view_date->month, $view_date->day, $view_date->year));
         ?>
 
-        <?php if ($task == "month.calendar") : ?>
+        <!-- <?php //if ($task == "month.calendar") : ?>
           <div class="month_date">
-            <?php echo JEV_CommonFunctions::jev_strftime("%B", $month_date) ?>, <?php echo JEV_CommonFunctions::jev_strftime("%Y", $month_date) ?>
+            <?php //echo JEV_CommonFunctions::jev_strftime("%B", $month_date) ?>, <?php echo JEV_CommonFunctions::jev_strftime("%Y", $month_date) ?>
           </div>
-        <?php endif; ?>
+        <?php //endif; ?> -->
 
-        <div class="new-navigation">
-          <ul class="list-group list-striped list-hover">
-            <?php if (in_array("byyear", $this->iconstoshow)) : ?>
-              <li class="list-group-item<?php if ($task == "year.listevents") : echo ' active'; endif; ?>">
-                <a id="nav-year" role="button" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=year.listevents&' . $view_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_VIEWBYYEAR'); ?>">
-                  <?php echo JText::_('JEV_VIEWBYYEAR'); ?>
-                </a>
-              </li>
-            <?php endif; ?>
+        <nav class="navbar-expand-lg jevent-nav">
+          <button class="navbar-toggler p-0" type="button" data-toggle="collapse" data-target="#jevents-nav" aria-controls="jevents-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="far fa-bars d-inline-block"></i>
+            <span class="d-inline-block">MENU'</span>
+          </button>
 
-            <?php if (in_array("bymonth", $this->iconstoshow)) : ?>
-              <li class="list-group-item<?php if ($task == "month.calendar") : echo ' active'; endif; ?>">
-                <a id="nav-month" role="button" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=month.calendar&' . $view_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_VIEWBYMONTH'); ?>" >
-                  <?php echo JText::_('JEV_VIEWBYMONTH'); ?>
-                </a>
-              </li>
-            <?php endif; ?>
+          <div class="collapse navbar-collapse" id="jevents-nav">
+            <div class="new-navigation w-100">
+              <ul class="list-group list-striped list-hover">
+                <?php if (in_array("byyear", $this->iconstoshow)) : ?>
+                  <li class="list-group-item<?php if ($task == "year.listevents") : echo ' active'; endif; ?>">
+                    <a id="nav-year" role="button" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=year.listevents&' . $view_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_VIEWBYYEAR'); ?>">
+                      <?php echo JText::_('JEV_VIEWBYYEAR'); ?>
+                    </a>
+                  </li>
+                <?php endif; ?>
 
-            <?php if (in_array("byweek", $this->iconstoshow)) : ?>
-              <li class="list-group-item<?php if ($task == "week.listevents") : echo ' active'; endif; ?>">
-                <a id="nav-week" role="button" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=week.listevents&' . $view_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_VIEWBYWEEK'); ?>" >
-                  <?php echo JText::_('JEV_VIEWBYWEEK'); ?>
-                </a>
-              </li>
-            <?php endif; ?>
+                <?php if (in_array("bymonth", $this->iconstoshow)) : ?>
+                  <li class="list-group-item<?php if ($task == "month.calendar") : echo ' active'; endif; ?>">
+                    <a id="nav-month" role="button" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=month.calendar&' . $view_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_VIEWBYMONTH'); ?>" >
+                      <?php echo JText::_('JEV_VIEWBYMONTH'); ?>
+                    </a>
+                  </li>
+                <?php endif; ?>
 
-            <?php if (in_array("byday", $this->iconstoshow)) : ?>
-              <li class="list-group-item<?php if ($task == "day.listevents") : echo ' active'; endif; ?>">
-                <a id="nav-today" role="button" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=day.listevents&' . $today_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_VIEWTODAY'); ?>" >
-                  <?php echo JText::_('JEV_VIEWTODAY'); ?>
-                </a>
-              </li>
-            <?php endif; ?>
+                <?php if (in_array("byweek", $this->iconstoshow)) : ?>
+                  <li class="list-group-item<?php if ($task == "week.listevents") : echo ' active'; endif; ?>">
+                    <a id="nav-week" role="button" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=week.listevents&' . $view_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_VIEWBYWEEK'); ?>" >
+                      <?php echo JText::_('JEV_VIEWBYWEEK'); ?>
+                    </a>
+                  </li>
+                <?php endif; ?>
 
-            <?php if (in_array("bymonth", $this->iconstoshow)) : ?>
-              <?php echo $this->_viewJumptoIcon($view_date, $viewimages); ?>
-            <?php endif; ?>
+                <?php if (in_array("byday", $this->iconstoshow)) : ?>
+                  <li class="list-group-item<?php if ($task == "day.listevents") : echo ' active'; endif; ?>">
+                    <a id="nav-today" role="button" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=day.listevents&' . $today_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_VIEWTODAY'); ?>" >
+                      <?php echo JText::_('JEV_VIEWTODAY'); ?>
+                    </a>
+                  </li>
+                <?php endif; ?>
 
-            <?php if ($cfg->get('com_hideshowbycats', 0) == '0') : ?>
-              <?php if (in_array("bycat", $this->iconstoshow)) : ?>
-                <li class="list-group-item<?php if ($task == "cat.listevents") : echo ' active'; endif; ?>">
-                  <a id="nav-cat" role="button" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=cat.listevents&' . $view_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_VIEWBYCAT'); ?>" >
-                    <?php echo JText::_('JEV_VIEWBYCAT'); ?>
-                  </a>
-                </li>
+                <?php if (in_array("bymonth", $this->iconstoshow)) : ?>
+                  <?php echo $this->_viewJumptoIcon($view_date, $viewimages); ?>
+                <?php endif; ?>
+
+                <?php if ($cfg->get('com_hideshowbycats', 0) == '0') : ?>
+                  <?php if (in_array("bycat", $this->iconstoshow)) : ?>
+                    <li class="list-group-item<?php if ($task == "cat.listevents") : echo ' active'; endif; ?>">
+                      <a id="nav-cat" role="button" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=cat.listevents&' . $view_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_VIEWBYCAT'); ?>" >
+                        <?php echo JText::_('JEV_VIEWBYCAT'); ?>
+                      </a>
+                    </li>
+                  <?php endif; ?>
+                <?php endif; ?>
+
+                <?php if (in_array("search", $this->iconstoshow)) : ?>
+                  <li class="list-group-item<?php if ($task == "search.form") : echo ' active'; endif; ?>">
+                    <a id="nav-search" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=search.form&' . $view_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_SEARCH_TITLE'); ?>" >
+                      Ricerca <i class="far fa-search"></i>
+                    </a>
+                  </li>
+                <?php endif; ?>
+              </ul>
+            </div>
+
+            <div class="">
+              <?php if (in_array("bymonth", $this->iconstoshow)) : ?>
+                <?php echo $this->_viewHiddenJumpto($view_date, $view, $Itemid); ?>
               <?php endif; ?>
-            <?php endif; ?>
+            </div>
 
-            <?php if (in_array("search", $this->iconstoshow)) : ?>
-              <li class="list-group-item">
-                <a id="nav-search" class="" href="<?php echo JRoute::_('index.php?option=' . $option . $cat . '&task=search.form&' . $view_date->toDateURL() . '&Itemid=' . $Itemid); ?>" title="<?php echo JText::_('JEV_SEARCH_TITLE'); ?>" >
-                  Ricerca <i class="far fa-search"></i>
-                </a>
-              </li>
-            <?php endif; ?>
-          </ul>
-        </div>
+          </div>
+        </nav>
 
-        <div class="">
-          <?php if (in_array("bymonth", $this->iconstoshow)) : ?>
-            <?php echo $this->_viewHiddenJumpto($view_date, $view, $Itemid); ?>
-          <?php endif; ?>
-        </div>
 <?php
     }
 
